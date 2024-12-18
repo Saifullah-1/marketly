@@ -8,7 +8,7 @@ function ProductInfo({product}) {
             <div style={{borderBottom: "1px solid rgb(141, 125, 125)", paddingBottom: "15px", borderStyle: ""}}>
                 <h1 >{product.name}</h1>
                     <p><strong>Vendor: </strong>{product.organizationName}</p>
-                    <h3>Price: ${product.price}</h3>
+                    <h3>Price: EGP {product.price}</h3>
                     <div style={{display: "flex", gap: "5px"}}>
                     <Rating precision={0.25} value={product.rating} readOnly /> {product.rating.toFixed(1)}/5
                     </div>
