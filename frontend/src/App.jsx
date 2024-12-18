@@ -7,6 +7,12 @@ import VendorReg from "./pages/registeration/VendorReg";
 import VendorInventory from "./pages/Inventory/VendorInventory";
 import ProductManagementPage from "./pages/product management/ProductManagementPage";
 import { ProductProvider } from "./contexts/ProductProvider";
+import ProductPage from "./pages/ProductPage/ProductPage";
+import Login from "./pages/logIn/LogIn";
+import SearchPage from "./pages/search page/SearchPage.jsx";
+import CategoryPage from "./pages/category page/CategoryPage.jsx";
+
+
 
 
 function App() {
@@ -35,6 +41,7 @@ function App() {
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       </BrowserRouter>
+
   );
 }
 
