@@ -29,12 +29,11 @@ public class VendorRequest {
     @Column(name = "username", unique = true)
     private String username;
 
-    @Column(name = "organization_name", unique = true)
+    @Column(name = "organization_name")
     private String organizationName;
 
-    @Column(name = "tax_number", unique = true)
+    @Column(name = "tax_number")
     private Long taxNumber;
-
 
     @Column(name = "auth_type", nullable = false)
     private String authType;
