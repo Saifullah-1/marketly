@@ -9,10 +9,5 @@ import java.util.List;
 public interface CategoryRepository extends JpaRepository<Category, String> {
     @Query("SELECT c.categoryName FROM Category c")
     List<String> findAllCategoryNames();
-
-    @Override
-    List<Category> findAll();
-
-    Category findByCategoryName(String name);
-    void deleteByCategoryName(String name);
 }
+

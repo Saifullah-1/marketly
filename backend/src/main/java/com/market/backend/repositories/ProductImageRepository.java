@@ -16,6 +16,5 @@ public interface ProductImageRepository extends JpaRepository<ProductImage, Long
     @Query("DELETE FROM ProductImage pi WHERE pi.product.id = :productId")
     void deleteByProductId(@Param("productId") Long productId);
 
-    List<ProductImage> findAllByProductId(Long id);
 }
 
