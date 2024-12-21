@@ -27,5 +27,5 @@ public class Comment {
     private String body;
 
     @Column(name = "rating", nullable = false)
-    private Integer rating;
+    private double rating;
 }
