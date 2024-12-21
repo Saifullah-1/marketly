@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
 @Repository
 public interface VendorRepository extends JpaRepository<Vendor, Long> {
     Optional <Vendor> findByOrganizationName(String organizationName);

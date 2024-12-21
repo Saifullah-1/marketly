@@ -24,10 +24,10 @@ public class Vendor {
 
     private Long id;
 
-    @Column(name = "organization_name", unique = true, nullable = false)
+    @Column(name = "organization_name")
     private String organizationName;
 
-    @Column(name = "tax_number", unique = true)
+    @Column(name = "tax_number")
     private Long taxNumber;
 
     @MapsId

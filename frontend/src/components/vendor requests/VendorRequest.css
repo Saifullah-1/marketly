@@ -5,8 +5,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
     padding: 16px;            
     margin: 8px 0; 
-    color: black;
-    font-size: 16px;                  
+    font-size: 25px;                     
     font-family: Arial, sans-serif;
     display: flex;  
     flex-direction: column;
@@ -43,7 +42,7 @@
     border-radius: 4px;
     color: #fff;
     padding: 8px 16px;
-    font-size: 16px;
+    font-size: 26px;
     cursor: pointer;
   }
   
@@ -55,4 +54,3 @@
   .reject-btn:hover {
     opacity: 0.9;
   }
-  

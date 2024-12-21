@@ -26,9 +26,8 @@ const VendorRequestsPage = () => {
 
     return (  
         <>
+            <h1>Vendor Requests</h1>
             <div className="vendor-request-page">
-                <h1 style={{ textAlign: 'center' }}>Vendor Requests</h1>
-                <hr style={{backgroundColor: 'grey'}} />
                 {requests.length > 0 ? (
                     requests.map((request) => (
                         <VendorRequestsCard key={request.id} request={request} onRemove={handleRemoveRequest}/>

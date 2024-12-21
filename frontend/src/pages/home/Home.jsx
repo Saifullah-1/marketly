@@ -25,8 +25,6 @@ function Home({ isAdmin, isVendor }) {
       });
   });
 
-
-function Home({ isAdmin , isVendor }) {
   return (
     <div className="home">
       <Header isAdmin={isAdmin} isVendor={isVendor} />
@@ -35,16 +33,19 @@ function Home({ isAdmin , isVendor }) {
           <Category key={category.name} category={category} />
         ))}
       </div>
+
     </div>
   );
 }
 
 Home.propTypes = {
-  isAdmin: PropTypes.bool,
-  isVendor: PropTypes.bool
+  isAdmin: PropTypes.bool.isRequired,
+
+  isVendor: PropTypes.bool.isRequired,
 };
 Category.propTypes = {
   category: PropTypes.object,
+
 };
 
 export default Home;

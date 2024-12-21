@@ -19,6 +19,7 @@ const VendorRequestsCard = (props) => {
         })
         .catch((error) => {
             console.error("Error deleting vendor:", error);
+            alert("Failed to delete vendor");
         });
         
     };
@@ -39,6 +40,7 @@ const VendorRequestsCard = (props) => {
         })
         .catch((error) => {
             console.error("Error adding vendor:", error);
+            alert("Failed to add vendor");
         });
     };
 

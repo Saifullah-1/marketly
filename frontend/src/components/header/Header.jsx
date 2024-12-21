@@ -46,9 +46,6 @@ function Header({ isAdmin = false }) {
   };
 
 
-
-function Header({ isAdmin, isVendor }) {
-
   return (
     <header className="header">
       <div className="logo">
@@ -109,11 +106,11 @@ function Header({ isAdmin, isVendor }) {
           </Link>
         )}
 
-        {isVendor && (
-          <Link to="/inventory" className="orders-text">
+        {/* {isVendor && (
+          <Link to="/vendor-dashboard" className="orders-text">
             Inventory
           </Link>
-        )}
+        )} */}
 
         <img src={cartIcon} alt="Cart" title="View Cart" />
         <img src={profileIcon} alt="Profile" title="Your Profile" />
@@ -124,7 +121,8 @@ function Header({ isAdmin, isVendor }) {
 
 Header.propTypes = {
   isAdmin: PropTypes.bool,
-  isVendor: PropTypes.bool
+
+  // isVendor: PropTypes.bool,
 
 };
 
