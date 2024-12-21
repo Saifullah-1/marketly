@@ -1,21 +1,16 @@
 package com.market.backend.repositories;
 
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.Query;
 import com.market.backend.models.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    Slice<Comment> findAllByProductId(Long id, Pageable pageable);
-
-    Slice<Comment> findAllByAccountId(Long id, Pageable pageable);
+    List<Comment> findByAccountId(Long id);
+    List<Comment> findByProductId(Long id);
     @Query("SELECT AVG(e.rating) FROM Comment e")
     Double findAverageValue();
-
-    Optional<Comment> findByAccountIdAndProductId(Long accountId, Long productId);
 }
