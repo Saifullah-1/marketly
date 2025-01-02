@@ -17,7 +17,7 @@ function VendorInventory() {
     const {setSelectedProduct} = useProductContext();
     const navigate = useNavigate();
     const productsPerPage = 4;
-    const id = 10;
+    const id = sessionStorage.getItem("id");
 
     useEffect(() => {
         fetch(`http://localhost:8080/vendor/products/${id}`, {

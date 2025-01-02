@@ -29,7 +29,7 @@ public class CheckoutController {
 
     @PostMapping("/orderDetails")
     public String checkoutOrderDetails(@RequestBody OrderDTO orderDTO){
-        System.out.println(orderDTO.getAccount_id()+" "+orderDTO.getCheckoutPrice());
+        System.out.println(orderDTO.getAccount_id() + " " + orderDTO.getCheckoutPrice());
         return checkoutService.insertOrderDetails(orderDTO);
     }
 

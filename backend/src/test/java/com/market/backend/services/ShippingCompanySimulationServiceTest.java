@@ -17,10 +17,6 @@ import org.springframework.http.ResponseEntity;
 import com.market.backend.models.Order;
 import com.market.backend.repositories.OrderRepositories;
 
-
-
-
-
 public class ShippingCompanySimulationServiceTest {
 
     @Mock

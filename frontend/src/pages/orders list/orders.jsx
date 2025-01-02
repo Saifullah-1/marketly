@@ -6,11 +6,12 @@ import "./orders.css";
 function OrdersList() {
   const [orders, setOrders] = useState([]);
 
-  // const id = sessionStorage.getItem("id");
+  const id = sessionStorage.getItem("id");
+  const role = sessionStorage.getItem("role");
 
   useEffect(() => {
     // fetch(`http://localhost:8080/orders/${id}`, {
-    fetch(`http://localhost:8080/orders/${3}`, {
+    fetch(`http://localhost:8080/orders/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -26,11 +27,11 @@ function OrdersList() {
         console.error(error);
         throw error;
       });
-  }, [orders]);
+  }, []);
 
   return (
     <div className="orders-list">
-      <Header isVendor={true} />
+      <Header isVendor={role==='[vendor]'} isAdmin={role==='[admin]'} />
       <div className="cards-list">
         {orders.map((order) => (
           <OrderCard order={order} key={order.id} />

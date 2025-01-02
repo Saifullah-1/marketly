@@ -52,6 +52,11 @@ public class ShoppingCartService {
         Optional<ShoppingCartProduct> existingCartProduct = shoppingCartProductRepository
                 .findByShoppingCartAndProduct(shoppingCart, product.get());
 
+        var cartProduct = createShoppingCart(quantity, existingCartProduct, shoppingCart, product);
+        shoppingCartProductRepository.save(cartProduct);
+    }
+
+    private static ShoppingCartProduct createShoppingCart(int quantity, Optional<ShoppingCartProduct> existingCartProduct, ShoppingCart shoppingCart, Optional<Product> product) {
         ShoppingCartProduct cartProduct;
         if (existingCartProduct.isPresent()) {
             cartProduct = existingCartProduct.get();
@@ -66,7 +71,7 @@ public class ShoppingCartService {
             double totalPrice = cartProduct.getProduct().getPrice() * quantity;
             cartProduct.setPrice(totalPrice);
         }
-        shoppingCartProductRepository.save(cartProduct);
+        return cartProduct;
     }
 
     private ShoppingCart createShoppingCart(Long userId) {

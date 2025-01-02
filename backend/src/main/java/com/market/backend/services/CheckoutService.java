@@ -36,18 +36,19 @@ public class CheckoutService {
             return "Something Went Wrong, Please Try Again";
         }
 
-        if (shippingInfoRepo.existsById(shippingInfo.getId())) {
-            ShippingInfo oldInfo = shippingInfoRepo.findById(shippingInfo.getId())
-                    .orElseThrow(() -> new EntityNotFoundException("ShippingInfo not found"));
-
-            oldInfo.setAddress(shippingInfo.getAddress());
-            oldInfo.setPhoneNumber(shippingInfo.getPhoneNumber());
-            oldInfo.setPostalCode(shippingInfo.getPostalCode());
+        if (!shippingInfoRepo.existsById(shippingInfo.getId())) {
             shippingInfoRepo.save(shippingInfo);
-            return "Shipping Info Updated Successfully";
+            return "Shipping Info Inserted Successfully";
         }
+
+        ShippingInfo oldInfo = shippingInfoRepo.findById(shippingInfo.getId())
+                .orElseThrow(() -> new EntityNotFoundException("ShippingInfo not found"));
+
+        oldInfo.setAddress(shippingInfo.getAddress());
+        oldInfo.setPhoneNumber(shippingInfo.getPhoneNumber());
+        oldInfo.setPostalCode(shippingInfo.getPostalCode());
         shippingInfoRepo.save(shippingInfo);
-        return "Shipping Info Inserted Successfully";
+        return "Shipping Info Updated Successfully";
     }
 
     public String insertOrderDetails(OrderDTO orderDTO) {

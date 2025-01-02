@@ -28,7 +28,13 @@ function ProductForm() {
 
     const fetchCategories = async () => {
       try {
-        const response = await fetch("http://localhost:8080/vendor/categories");
+        const response = await fetch("http://localhost:8080/vendor/categories", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`
+          },
+        });
         if (response.ok) {
           const data = await response.json();
           console.log(data);
@@ -77,10 +83,7 @@ function ProductForm() {
     formData.append("quantity", productData.quantity);
     formData.append("price", productData.price);
     formData.append("category", productData.category);
-    formData.append("vendorId", productData.vendorId);
-    productData.images.forEach((image) => {
-      formData.append("images", image);
-    });
+    formData.append("vendorId", sessionStorage.getItem("id"));
 
     try {
       const operation = isNewProduct ? "add" : "update";

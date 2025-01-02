@@ -24,9 +24,10 @@ public class VendorOrdersService {
             int size,
             String sortDir) {
 
-        Pageable pageable = PageRequest.of(page, size,
-                sortDir.equalsIgnoreCase("asc") ? Sort.by("order.date").ascending()
-                        : Sort.by("order.date").descending());
+        var orderColumn = sortDir.equalsIgnoreCase("asc") ?
+                Sort.by("order.date").ascending() : Sort.by("order.date").descending();
+
+        Pageable pageable = PageRequest.of(page, size, orderColumn);
 
         return orderProductsRepository.findOrderProductsWithAccountByVendorAccountIdAndStatus(accountId, status, pageable);
     }

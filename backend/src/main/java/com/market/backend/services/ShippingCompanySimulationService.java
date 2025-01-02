@@ -48,20 +48,10 @@ public class ShippingCompanySimulationService {
     
         Pageable pageable = listOrders.getPageable();
         boolean hasNext = updatedOrders.size() == pageable.getPageSize();
-        Slice<Order> updatedOrderSlice = new SliceImpl<>(updatedOrders, pageable, hasNext);
-    
-        return updatedOrderSlice;
+
+        return new SliceImpl<>(updatedOrders, pageable, hasNext);
     }
 
-    public List<Order> getListOrderStatus(List<Order> listOrders) {
-        List<Order> updatedOrders = new ArrayList<>();
-        for (Order order : listOrders) {
-            Order updatedOrder = updateOrderStatus(order);
-            updatedOrders.add(updatedOrder);
-        }
-        return updatedOrders;
-    }
-    
 
     public Order updateOrderStatus(Order order) {
         LocalDateTime pastDateTime = order.getDate();

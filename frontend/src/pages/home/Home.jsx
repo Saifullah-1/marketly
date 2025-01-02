@@ -24,12 +24,12 @@ function Home({ isAdmin, isVendor }) {
         console.error(error);
         throw error;
       });
-  });
+  }, []);
 
 
   return (
     <div className="home">
-      <Header isAdmin={isAdmin} isVendor={isVendor} />
+      <Header isAdmin={sessionStorage.getItem('role')==='[admin]' || isAdmin} isVendor={sessionStorage.getItem('role')==='[vendor]'||isVendor} />
       <div className="categories">
         {categories.map((category) => (
           <Category key={category.name} category={category} />

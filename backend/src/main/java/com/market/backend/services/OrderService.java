@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -40,13 +41,7 @@ public class OrderService {
     }
 
     private List<Order> refineOrders(List<Order> all, int id) {
-        List<Order> refined = new ArrayList<>();
-        all.forEach(order -> {
-            if (order.getAccount().getId() == id) {
-                refined.add(order);
-            }
-        });
-        return refined;
+        return all.stream().filter(order -> order.getAccount().getId() == id).collect(Collectors.toList());
     }
 
     @Transactional

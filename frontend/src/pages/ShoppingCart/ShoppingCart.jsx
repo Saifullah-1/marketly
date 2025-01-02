@@ -117,7 +117,7 @@ function ShoppingCart() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header isAdmin={sessionStorage.getItem('role')==='[admin]'} isVendor={sessionStorage.getItem('role')==='[vendor]'} />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
 
@@ -174,7 +174,7 @@ function ShoppingCart() {
               </div>
               <button
                 className="mt-6 w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 transition-colors"
-                onClick={() => navigate("checkout")}
+                onClick={() => navigate("/checkout")}
                 disabled={cartItems.length === 0}
               >
                 Proceed to Checkout

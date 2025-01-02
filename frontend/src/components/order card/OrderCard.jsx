@@ -11,10 +11,6 @@ const OrderCard = ({ order }) => {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
       .catch((error) => {
         console.error(error);
         throw error;
