@@ -24,15 +24,11 @@ function ProductForm() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    console.log("Fetching categories");
-
     const fetchCategories = async () => {
       try {
         const response = await fetch("http://localhost:8080/vendor/categories");
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
-
           data.sort();
           setCategories(data);
         } else {

@@ -272,14 +272,8 @@ public class SignUpServiceTest {
 
     @Test
     void testInsertBasicClientCaseExist() {
-        Account client = Account.builder()
-        .isActive(true)
-        .username("ahmed")
-        .authType("basic")
-        .type("client")
-        .build();
         when(accountRepo.existsByUsername("ahmed")).thenReturn(true);
-        String result = signUpService.insertBasicClient(client,"123");
+        String result = signUpService.insertBasicClient("ahmed","123");
         assertEquals("The username is already exist",result);
     }
 
@@ -298,57 +292,30 @@ public class SignUpServiceTest {
 
         when(accountRepo.existsByUsername("ahmed")).thenReturn(false);
         when(passwordRepository.save(password)).thenReturn(password);
-        String result = signUpService.insertBasicClient(client,"123");
+        String result = signUpService.insertBasicClient("ahmed","123");
         assertEquals("Successfully registered",result);
     }
 
     @Test
     void testInsertBasicClientCaseNullUsername() {
-        Account client = Account.builder()
-        .isActive(true)
-        .username(null)
-        .authType("basic")
-        .type("client")
-        .build();
-
-        String result = signUpService.insertBasicClient(client,"123");
+        String result = signUpService.insertBasicClient(null,"123");
         assertEquals("The username can't be empty",result);
     }
 
     @Test
     void testInsertBasicClientCaseNullPassword() {
-        Account client = Account.builder()
-        .isActive(true)
-        .username("ahmed")
-        .authType("basic")
-        .type("client")
-        .build();
-
-        String result = signUpService.insertBasicClient(client,null);
+        String result = signUpService.insertBasicClient("ahmed",null);
         assertEquals("The password can't be empty",result);
     }
     @Test
     void testInsertBasicClientCaseLongPassword() {
-        Account client = Account.builder()
-        .isActive(true)
-        .username("ahmed")
-        .authType("basic")
-        .type("client")
-        .build();
-
-        String result = signUpService.insertBasicClient(client,"1233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333");
+        String result = signUpService.insertBasicClient("ahmed","1233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333");
         assertEquals("The password can't be more than 80 character",result);
     }
     
     @Test
     void testInsertBasicClientCaseLongUsername() {
-        Account client = Account.builder()
-        .isActive(true)
-        .username("ahmedddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
-        .authType("basic")
-        .type("client")
-        .build();
-        String result = signUpService.insertBasicClient(client,"123");
+        String result = signUpService.insertBasicClient("ahmedddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","123");
         assertEquals("The username can't be more than 80 character",result);
     }
 }

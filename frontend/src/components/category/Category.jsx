@@ -11,7 +11,6 @@ function Category({ category }) {
     <div
       className="category"
       onClick={() => {
-        console.log("Navigating to /category/" + category.categoryName);
         navigate(`/category?category=${category.categoryName}`);
       }}
     >

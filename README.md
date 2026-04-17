@@ -39,7 +39,7 @@
 
 ### Prerequisites
 
-- Java 17+  
+- Java 21
 - Node.js & npm  
 - MySQL  
 - Maven
@@ -54,21 +54,23 @@
 
 3. Start the backend:
    ```bash
-   mvn spring-boot:run
+  cd backend
+  ./mvnw spring-boot:run
    ```
 
 4. Start the frontend:
    ```bash
    cd frontend
    npm install
-   npm start
+  npm run dev
    ```
 
 ## Testing 🧪
 
 - Run backend tests with:
   ```bash
-  mvn test
+  cd backend
+  ./mvnw test
   ```
 - Utilized **Mockito** for mocking and **JUnit** for unit testing.
 

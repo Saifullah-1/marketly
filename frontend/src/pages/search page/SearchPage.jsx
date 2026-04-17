@@ -15,7 +15,6 @@ function SearchPage() {
   useEffect(() => {
     setWord(new URLSearchParams(location.search).get("word"));
     if (word) {
-      console.log("Fetching search results for", word);
       fetchSearchResults(word);
     }
   }, [location, word]);
@@ -42,8 +41,6 @@ function SearchPage() {
     <div className="search-page">
       <Header isAdmin={false} />
       <h1>Search Results for `{word}`</h1>
-      {console.log("numebr of results", results.length)}
-      {console.log("results", results)}
       {results.length > 0 && (
         <ProductListing products={results} showFilter={true} />
       )}

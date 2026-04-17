@@ -1,11 +1,11 @@
 package com.market.backend.services;
 
+import com.market.backend.models.Account;
 import com.market.backend.models.Password;
 import com.market.backend.models.VendorRequest;
+import com.market.backend.repositories.AccountRepository;
 import com.market.backend.repositories.PasswordRepository;
 import com.market.backend.repositories.VendorRequestRepository;
-import com.market.backend.models.Account;
-import com.market.backend.repositories.AccountRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,22 +62,25 @@ public class SignUpService {
     }
 
     @Transactional
-    public String insertBasicClient(Account client, String password) {
-        if (client.getUsername() == null)
+    public String insertBasicClient(String username, String password) {
+        if (username == null)
             return "The username can't be empty";
-        if (client.getUsername().length() > 80)
+        if (username.length() > 80)
             return "The username can't be more than 80 character";
         if (password == null)
             return "The password can't be empty";
         if (password.length() > 80)
             return "The password can't be more than 80 character";
-        if (accountRepository.existsByUsername(client.getUsername())) {
+        if (accountRepository.existsByUsername(username)) {
             return "The username is already exist";
         }
 
-        client.setActive(true);
-        client.setType("client");
-        client.setAuthType("basic");
+        Account client = Account.builder()
+                .username(username)
+                .isActive(true)
+                .type("client")
+                .authType("basic")
+                .build();
 
         Password pass = Password.builder()
                 .account(client)
@@ -89,7 +92,6 @@ public class SignUpService {
     }
 
     public String insertBasicVendor(VendorRequest vendor) {
-        System.out.println("Inserting Basic Vendor Request");
         if (vendor.getOrganizationName() == null)
             return "The business name can't be empty";
         if (vendor.getOrganizationName().length() > 80)
@@ -105,7 +107,6 @@ public class SignUpService {
         if (vendor.getTaxNumber() == -1)
             return "The tax number can't be empty";
         if (String.valueOf(vendor.getTaxNumber()).length() != 9) {
-            System.out.println(String.valueOf(vendor.getTaxNumber()).length());
             return "The tax number must be of 9 numbers only";
         }
         if (vendorRequestRepository.existsByUsername(vendor.getUsername())) {

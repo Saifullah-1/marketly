@@ -52,8 +52,6 @@ public class CategoryController {
             @PathVariable String categoryName,
             @RequestParam String newName) {
 
-                System.out.println("Category name: " + categoryName+ " New name: " + newName);
-
         return categoryService.updateCategory(categoryName, newName);
     }
 

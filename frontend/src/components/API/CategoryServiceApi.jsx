@@ -54,8 +54,6 @@ export const CategoryService = {
       const formData = new FormData();
       formData.append('newName', newName);
       
-      console.log(categoryName )
-      console.log(newName)
       const response = await axios.put(
         `${BASE_URL}/${categoryName}?newName=${newName}`,
         null,

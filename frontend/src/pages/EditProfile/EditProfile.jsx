@@ -20,7 +20,7 @@ const UserAccount = () => {
                 setUserData(userData);
                 setOriginalData(userData);
             } else {
-                console.log('User info not found or an error occurred.');
+                return;
             }
         });
     }, []);

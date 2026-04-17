@@ -9,7 +9,6 @@ const FeedbackCard = (props) => {
             method: "DELETE", 
         })
         .then((res) => {
-            console.log(res)
             if (!res.ok) {
                 throw new Error("Failed to delete feedback");
             }

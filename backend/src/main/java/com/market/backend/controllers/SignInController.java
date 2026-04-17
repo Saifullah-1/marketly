@@ -71,7 +71,6 @@ public class SignInController {
 
         // Extract email and details from Google
         String email = principal.getAttribute("email");
-        System.out.println("Google Sign-In successful for email: " + email);
         // extract account_id
         long id = accountRepository.findIdByUsername(email);
         //extract roles

@@ -25,7 +25,6 @@ async function BasicSignIn(username, password) {
 
       // Handle the case where the response is ONLY the JWT as plain text
       const token = await response.text();
-      console.log("JWT Token received:", token);
       return { token }; // Return an object with the token property
   } catch (error) {
       console.error("Sign-in error:", error);

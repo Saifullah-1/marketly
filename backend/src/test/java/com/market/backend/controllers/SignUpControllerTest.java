@@ -2,7 +2,7 @@ package com.market.backend.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.market.backend.configurations.JWTFilter;
-import com.market.backend.models.Account;
+import com.market.backend.dtos.ClientBasicSignUpRequest;
 import com.market.backend.models.VendorRequest;
 import com.market.backend.services.JWTService;
 import com.market.backend.services.SignUpService;
@@ -36,19 +36,12 @@ class SignUpControllerTest {
 
     @Test
     void testClientBasicAuth_ReturnsOk200() throws Exception {
-        Account account = Account.builder()
-                .id(1L)
-                .username("AhmedAshraf")
-                .isActive(true)
-                .type("client")
-                .authType("basic")
-                .build();
-        String password = "147852369";
+        ClientBasicSignUpRequest request = new ClientBasicSignUpRequest("AhmedAshraf", "147852369");
 
-        String body = new ObjectMapper().writeValueAsString(account);
-        when(signUpService.insertBasicClient(account, password)).thenReturn("Successfully registered");
+        String body = new ObjectMapper().writeValueAsString(request);
+        when(signUpService.insertBasicClient("AhmedAshraf", "147852369")).thenReturn("Successfully registered");
 
-        mockMvc.perform(post("/SignUp/ClientBasicSignUp/{password}", password)
+        mockMvc.perform(post("/SignUp/ClientBasicSignUp")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(body))
                 .andExpect(status().isOk())

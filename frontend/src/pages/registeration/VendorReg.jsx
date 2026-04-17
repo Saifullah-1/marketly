@@ -103,14 +103,6 @@ function VendorReg() {
 
   const Register = async (event) => {
     event.preventDefault();
-    var businessname = document.getElementById("businessname").value;
-    var taxnumber = document.getElementById("taxnumber").value;
-    var password = document.getElementById("password").value;
-    var username = document.getElementById("username").value;
-    console.log(businessname);
-    console.log(taxnumber);
-    console.log(password);
-    console.log(username);
     if (!isVisible_1 && !isVisible_2 && !isVisible_3) {
       const response = await VendorBasicSignUp(
         businessname,
@@ -118,10 +110,8 @@ function VendorReg() {
         password,
         taxnumber
       );
-      console.log(response);
 
       if (response == "Successfully registered") {
-        console.log(response);
         navigate("/home");
       } else if (response.includes("business name")) {
         const messageContainer_1 =
@@ -232,21 +222,13 @@ function VendorReg() {
         </button>
         <button
           type="button"
-          onClick={() => (
-            console.log("google"),
-            (window.location.href =
+          onClick={() => {
+            window.location.href =
               "http://localhost:8080/SignUp/Google/Vendor/" +
-              document.getElementById("businessname").value +
+              encodeURIComponent(businessname) +
               "/" +
-              document.getElementById("taxnumber").value
-              ),
-            console.log(
-              "http://localhost:8080/SignUp/Google/Vendor/" +
-                document.getElementById("businessname").value +
-                "/" +
-                document.getElementById("taxnumber").value
-            )
-          )}
+              encodeURIComponent(taxnumber);
+          }}
           className="googleOauth"
         >
           <img src="src\assets\google.png" className="googleIcon" />

@@ -72,8 +72,6 @@ public class CommentsService {
         Account account = accountRepository.findById(commentDTO.getAccountId())
                 .orElseThrow(() -> new NoSuchElementException("Account not found"));
 
-        System.out.println("prod:"+product.getId());
-        System.out.println("acc:"+(account.getId()));
         if (reviewExists(account.getId(), product.getId())) {
             throw new IllegalArgumentException("Review already exists");
         }

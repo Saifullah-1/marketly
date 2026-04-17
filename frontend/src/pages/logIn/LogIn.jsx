@@ -32,8 +32,6 @@ const Login = () => {
     }
     try {
       const response = await BasicSignIn(email, password);
-      // Handle successful login (e.g., store token, navigate to dashboard)
-      console.log("Login successful", response);
       const parsedToken = JSON.parse(response.token); 
     
       sessionStorage.setItem('token',  parsedToken.token);
@@ -43,7 +41,7 @@ const Login = () => {
       navigate('/home');
     } catch (error) {
       console.error("Login error:", error);
-      setPasswordError(error.message); // Display error message to the user
+      setPasswordError(error.message);
     }
   }
 

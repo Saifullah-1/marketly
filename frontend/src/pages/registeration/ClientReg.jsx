@@ -63,9 +63,7 @@ function ClientReg() {
     event.preventDefault(); // Prevent the default form submission
     if (!isVisible_1 && !isVisible_2) {
       const response = await ClientBasicSignUp(username, password);
-      console.log(response);
       if (response === "Successfully registered") {
-        console.log(response);
         navigate("/home");// Trigger navigation after successful registration
       } else if (response.includes("username")) {
         const messageContainer_1 =

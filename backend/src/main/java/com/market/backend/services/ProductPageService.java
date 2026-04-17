@@ -65,7 +65,6 @@ public class ProductPageService {
             try {
                 return new ImageDTO(productImage);
             } catch (IOException e) {
-                System.out.println(e.getMessage());
                 e.printStackTrace();
                 throw new NoSuchElementException("Image not found");
             }
