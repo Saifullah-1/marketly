@@ -8,6 +8,7 @@ import com.market.backend.repositories.PasswordRepository;
 import com.market.backend.repositories.VendorRequestRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,6 +20,8 @@ public class SignUpService {
     VendorRequestRepository vendorRequestRepository;
     @Autowired
     PasswordRepository passwordRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public boolean checkUsernameAvailability(String username) {
         return !vendorRequestRepository.existsByUsername(username)
@@ -84,7 +87,7 @@ public class SignUpService {
 
         Password pass = Password.builder()
                 .account(client)
-                .accountPassword(password)
+            .accountPassword(passwordEncoder.encode(password))
                 .build();
         passwordRepository.save(pass);
 

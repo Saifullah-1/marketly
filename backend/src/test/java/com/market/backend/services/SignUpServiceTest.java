@@ -14,6 +14,7 @@ import com.market.backend.models.VendorRequest;
 import com.market.backend.repositories.AccountRepository;
 import com.market.backend.repositories.PasswordRepository;
 import com.market.backend.repositories.VendorRequestRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootTest
 public class SignUpServiceTest {
@@ -28,6 +29,9 @@ public class SignUpServiceTest {
 
     @Mock
     private PasswordRepository passwordRepository;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @Test
     void testCheckUsernameAvailabilityAccount() {

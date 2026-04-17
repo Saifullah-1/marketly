@@ -43,6 +43,9 @@ public class SecurityConfiguration {
                 .addFilterBefore((Filter) jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(configurer -> configurer
                         .requestMatchers("/h2-console/**").permitAll()  // Add this for H2 console
+                    .requestMatchers("/auth/**").permitAll()
+                    .requestMatchers("/SignUp/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/Search/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
                         .requestMatchers("/categories/**").hasRole("SUPERADMIN")
                         .anyRequest().authenticated()
